@@ -1,7 +1,7 @@
 <?php
 
-use Sami\Sami;
 use Sami\RemoteRepository\GitHubRemoteRepository;
+use Sami\Sami;
 use Sami\Version\GitVersionCollection;
 use Symfony\Component\Finder\Finder;
 
@@ -26,7 +26,7 @@ $versions = GitVersionCollection::create($dir)
     ->add('master', 'master branch')
 ;
 
-return new Sami($iterator, array(
+return new Sami($iterator, [
     'theme'                => 'default',
     'versions'             => $versions,
     'title'                => 'Kanso CMS API',
@@ -34,6 +34,4 @@ return new Sami($iterator, array(
     'cache_dir'            => __DIR__ . '/../api/cache/%version%',
     'remote_repository'    => new GitHubRemoteRepository('kanso-cms/cms', $dir),
     'default_opened_level' => 2,
-));
-
-
+]);
